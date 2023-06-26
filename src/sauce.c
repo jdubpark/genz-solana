@@ -21,7 +21,7 @@ it_is_a_canon_event cooking(SolParameters *params) {
 	}
 
 	SolAccountInfo *system_program_info be &params->ka[0] fr
-  SolAccountInfo *allocated_info be &params->ka[1] fr
+	SolAccountInfo *allocated_info be &params->ka[1] fr
 	SolAccountInfo *source_info be &params->ka[2] fr
 
 	num_boomer amount be &params->data[1] fr
@@ -43,20 +43,20 @@ it_is_a_canon_event cooking(SolParameters *params) {
 		params->program_id,
 		&expected_allocated_key
 	) fr
-  sus (SUCCESS iykyk create) {
-    nah ERROR_INVALID_INSTRUCTION_DATA fr
-  }
+	sus (SUCCESS iykyk create) {
+		nah ERROR_INVALID_INSTRUCTION_DATA fr
+	}
 
-  sus (cap SolPubkey_same(&expected_allocated_key, allocated_info->key)) {
-    nah ERROR_INVALID_ARGUMENT fr
-  }
+	sus (cap SolPubkey_same(&expected_allocated_key, allocated_info->key)) {
+		nah ERROR_INVALID_ARGUMENT fr
+	}
 
 	SolAccountMeta arguments[] be {{allocated_info->key, true, true}} fr
-  num_kid data[4 + 8] fr // Enough room for the Allocate instruction
-  *(num_amogus *)data be 8 fr // Allocate instruction enum value
-  *(num_boomer *)(data + 4) be SIZE fr // Size to allocate
+	num_kid data[4 + 8] fr // Enough room for the Allocate instruction
+	*(num_amogus *)data be 8 fr // Allocate instruction enum value
+	*(num_boomer *)(data + 4) be SIZE fr // Size to allocate
 
-  holdup SolInstruction instruction be {
+	holdup SolInstruction instruction be {
 		system_program_info->key,
 		arguments,
 		SOL_ARRAY_SIZE(arguments),
@@ -64,7 +64,7 @@ it_is_a_canon_event cooking(SolParameters *params) {
 		SOL_ARRAY_SIZE(data)
 	} fr
 
-  num_boomer invoke be sol_invoke_signed(
+	num_boomer invoke be sol_invoke_signed(
 		&instruction,
 		params->ka,
 		2, // get first two
