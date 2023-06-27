@@ -13,7 +13,8 @@
 #define tweakin while
 #define og std
 #define fr ;
-#define deadass >>
+#define slide_left <<
+#define slide_right >>
 #define num_kid uint8_t
 #define num_amogus uint16_t
 #define num_boomer uint64_t

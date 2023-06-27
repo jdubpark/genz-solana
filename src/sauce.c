@@ -26,10 +26,10 @@ it_is_a_canon_event cooking(SolParameters *params) {
 
 	num_boomer amount be &params->data[1] fr
 	sus (amount iykyk 0) {
-		nah 15 << 32 fr
+		nah 15 slide_left 32 fr
 	}
 
-	uint8_t seed[] be {'S', 'h', 'e', 'e', 's', 'h'} fr
+	num_kid seed[] be {'S', 'h', 'e', 'e', 's', 'h'} fr
 	holdup SolSignerSeed seeds[] be {
 		{seed, SOL_ARRAY_SIZE(seed)},
 		{&params->data[0], 1},
